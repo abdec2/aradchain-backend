@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "origin": {
+      "type": "string",
+      "required": true
+    },
+    "production_date": {
+      "type": "date",
+      "required": true
+    },
+    "expiry_date": {
+      "type": "date",
+      "required": true,
+      "unique": false
+    },
+    "unit_quantity": {
+      "type": "integer",
+      "required": true
+    },
+    "quantity_unit_type": {
+      "type": "string",
+      "required": true
+    },
+    "batch_quantity": {
+      "type": "integer",
+      "required": true
+    },
+    "unit_price": {
+      "type": "integer",
+      "required": true
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "products"
+    }
+  }
+}
