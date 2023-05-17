@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "vendor_verifications",
+  "info": {
+    "singularName": "vendor-verification",
+    "pluralName": "vendor-verifications",
+    "displayName": "vendor_data",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "companyName": {
+      "type": "string",
+      "required": true
+    },
+    "companyAddress": {
+      "type": "string",
+      "required": true
+    },
+    "companyPhone": {
+      "type": "string",
+      "required": true
+    },
+    "companyEmail": {
+      "type": "email",
+      "required": true
+    },
+    "vendorType": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "ownerIdCard": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "ownerlicenses": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "vendor_datum"
+    }
+  }
+}

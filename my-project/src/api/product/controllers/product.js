@@ -23,13 +23,21 @@ module.exports = createCoreController("api::product.product", {
   },
   async find(ctx) {
     const user = ctx.state.user;
-
     ctx.query.filters = {
       ...(ctx.query.filters || {}),
       user: user.id,
     };
 
     return super.find(ctx);
+  },
+  async findMany(ctx) {
+    const entries = await strapi.entityService.findMany(
+      "api::product.product",
+      {
+        populate: "*",
+      }
+    );
+    return entries;
   },
   async update(ctx) {
     const user = ctx.state.user;
@@ -45,7 +53,7 @@ module.exports = createCoreController("api::product.product", {
     console.log(productUser);
     try {
       if (productUser.user.id !== user.id) {
-        ctx.body = "You are not allowed to update this product"
+        ctx.body = "You are not allowed to update this product";
       } else {
         const updated = await strapi.entityService.update(
           "api::product.product",

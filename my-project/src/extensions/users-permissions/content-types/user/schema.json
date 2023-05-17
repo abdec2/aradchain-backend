@@ -80,6 +80,12 @@
       "relation": "oneToMany",
       "target": "api::product.product",
       "mappedBy": "user"
+    },
+    "vendor_datum": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::vendor-verification.vendor-verification",
+      "mappedBy": "user"
     }
   }
 }
